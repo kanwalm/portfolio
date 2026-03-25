@@ -1,0 +1,53 @@
+{
+  "name": "Shared ToolHive DevContainer",
+  "image": "haroondilshad/ubuntu-devcontainer:latest",
+  
+  // Docker-in-Docker is now fully baked into the image - no feature needed!
+  // This eliminates the 30+ second ports.ubuntu.com delays during container creation.
+  
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "anysphere.cursorpyright",
+        "golang.Go",
+        "ms-python.python",
+        "dbaeumer.vscode-eslint",
+        "github.vscode-github-actions",
+        "eamodio.gitlens",
+        "ms-vscode.vscode-typescript-next",
+        "firsttris.vscode-jest-runner",
+        "ms-vscode.makefile-tools",
+        "mongodb.mongodb-vscode",
+        "cweijan.vscode-postgresql-client2",
+        "esbenp.prettier-vscode",
+        "Prisma.prisma",
+        "ms-python.debugpy",
+        "mechatroner.rainbow-csv",
+        "tauri-apps.tauri-vscode",
+        "tomoki1207.pdf",
+        "ms-azuretools.vscode-docker"
+      ]      
+    }
+  },
+  "remoteUser": "vscode",
+  "runArgs": [
+    "--init",
+    "--privileged",
+    "--network=toolhive-external"
+  ],
+  "mounts": [
+    "source=${localEnv:HOME}/.local/share/pnpm,target=/home/vscode/.local/share/pnpm,type=bind",
+    "source=${localEnv:HOME}/.bun/install/cache,target=/home/vscode/.bun/install/cache,type=bind"
+  ],
+  
+  // Start Docker daemon when container starts (runs after postCreateCommand)
+  "postStartCommand": "/usr/local/share/docker-init.sh",
+  
+  // Setup MCP config on first create
+  "postCreateCommand": "setup-mcp-config",
+  
+  "forwardPorts": [3000, 3001, 1420, 1421]
+}

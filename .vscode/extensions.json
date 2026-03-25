@@ -1,0 +1,20 @@
+{
+  "recommendations": [
+    "ms-azuretools.vscode-docker",
+    "golang.Go",
+    "ms-python.python",
+    "dbaeumer.vscode-eslint",
+    "github.vscode-github-actions",
+    "eamodio.gitlens",
+    "ms-vscode.vscode-typescript-next",
+    "firsttris.vscode-jest-runner",
+    "ms-vscode.makefile-tools",
+    "esbenp.prettier-vscode",
+    "Prisma.prisma",
+    "ms-python.debugpy",
+    "mechatroner.rainbow-csv",
+    "tauri-apps.tauri-vscode",
+    "tomoki1207.pdf"
+  ],
+  "unwantedRecommendations": []
+}
